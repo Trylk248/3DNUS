@@ -50,6 +50,1285 @@
 <p>Note: All Icons &amp; Images and/or components that are featured in U-NUS/3DSNUS are created by: The Original Creator (Me), Current Dev, or other Artists/Dev's. You may NOT redistribute this software, or Bundle/Sell it for any cost. If you paid for any of these App's/App, then you have been scammed! This software is Free, and will always be Free. It is also Open-Source, and is maintained by Volunteers. This software is Non-Profit! We are NOT affiliated with Nintendo at All! The new Flat Styled icons were created by me in Gimp 2.8</p>
 
 <blockquote>
+<p>Troubleshooting</p>
+</blockquote>
+
+<p>Trouble Shooting:​</p>
+
+<p>Q: 3DNUS Return's an Error Stating that the FW/Title isn't Available;
+This is usually caused by the FW/Title not being Compatible w/3DNUS. 
+Try another FW Version or Title.</p>
+
+<p>Q: 3DNUS Freeze's when Downloading, or Will not Respond.
+Be patient, when downloading 3DNUS Will disable itself to ensure that nothing
+go's wrong. When it Freeze's, you may need to just wait or Force Close the Application.</p>
+
+<p>Q: 3DNUS Return's an Error Stating that an Exception has Occurred;
+Preventing the App from Continuing. 
+This is a common Problem, Try clicking Continue and see if it works, if not, try again with another
+FW/Title. </p>
+
+<p>Q: 3DNUS Suddenly Crash's for No Reason! 
+Well there must be a Reason, but try Installing the Latest .NET 4.5 FrameWork &amp; PowerPack 3.1 or 3.2.</p>
+
+<p>Q: 3DNUS Will not Open or Crash's Immediately! 
+Repeat the Step's as of the One Above. 
+Note: 3DNUS is Compiled for x64 (x64 bit) Versions of Windows (Or Wine/Linux). 
+As of now there is no x32 (x32 bit) Version of 3DNUS. 
+It should be Obvious that you can't run x64 Apps on a x32 Version of Windows (Or Wine/Linux).</p>
+
+<p>Q: 3DNUS Return's the Error Stating that it can NOT Connect to the NUS Servers!
+Try again later, Nintendo's Server's may be under some Load (Or heavy Load). 
+If it still doesn't work, make sure that 3DNUS is Permitted to Connect through your Proxy or DNS/Firewall (etc);
+NOTE: Make sure that your Router isn't blocking the NUS (Nintendo Update Service) server's as well! </p>
+
+<p>Q: The Updater Fails to load, or Won't do anything! 
+Try installing the Latest .NET FW and Powerpack REDIST (Powerpacks 10.0). 
+If the Problem persist's, contact me via PM or <a href="https://github.com/Email" class="user-mention">@Email</a>.
+Also, make sure you have an Internet Connection! </p>
+
+<p>Q: The Compatibility Checker fails on: Windows Version. 
+The Version of Windows you may be using, is Incompatible w/3DNUS! 
+If your running the Program in Compatibility Mode (Windows Vista/SP1/SP2/XP/SP1/SP2/SP3), 
+then try Turning it off or use a New Version of Windows (Ex: Windows 7 or Windows 8/8.1)
+Incompatible Windows Versions: Windows 95, 98, ME, 2000, XP, and Vista.
+Compatible Windows Versions: Windows 7, 8, 8.1, and 10.</p>
+
+<p>Q: The Compatibility Checker is Stuck on Windows Version! 
+This Seems to be a Rare Issue, if your Using a Guest account, or an Account w/a Group Policy 
+being used (Schools, &amp; Org's use this) then you may need to get Admin Access, or Try again on another Computer. </p>
+
+<p>Q: The Compatibility Checker fails on: Component Issues. 
+Make sure that PowerPacks10.0(In REDIST) is Installed, or Repair it. 
+Also, make sure that the Latest Version of .NET and its Updates are Installed! </p>
+
+<p>Q: How does the Config Work? 
+The Config is loaded when the Splash-Screen is Loaded, after a Few Seconds
+there is some small white text saying, "Config Loaded!" in the Bottom Left Corner.
+In the Bottom right Corner, there is the Version + Build Number.
+Each Configuration is Saved as Separate Files ("Ex: adv_dns.cfg"), this file Either contains a "0" or "1", "1" States for True while "0" States for False. If the Config File is empty, then the Default Value will be False (0).
+Having separate Config Files is way easier to manage, and is also safer. For example, let's say that the Config was stored in one File (Ex: config.cfg); The Program would have to read one line at a time, plus that would be to much of a Hassle. What if you Deleted the Config File? Your entire Configuration would be reset to Defaults! Having separate Configs allow's you to Backup separate Configs, and is Generally Safer! If a Config File is Removed, the Program will still operate, but the Config File will be Re-Written to a Default Value (0 or 1). Some Config Files will have "default" or FW Versions (Ex: 7.1.0-17_USA).
+Config Files like, "adv_dns_p" or "adv_dns_s" will have values such as; "0.0.0.0" or "8.8.8.8", but aren't defaults. Note: DNS and Proxy Options will be Ready around "2.7 or 2.8". Now that's just the Basic's on how the Config works for the Settings Manager.</p>
+
+<p>Q: How do i make extensions? 
+I Will release a Dev Kit to help you make Extensions for 3DNUS,
+but here's some basic Info on how to get started:</p>
+
+<p>This is how the ext_info file should be arranged (No File Extension! Ex: file.txt need to be just file.)
+​
+Code:
+[extension_info]
+ver=Version Here.
+title=Name of Extension.
+ext_type=Is it a Default or Framework/Other
+ext_priv=Privileges for the Ext(1 is User, 2 is Admin, 3 is ROOT).
+ext_external_res=Use External Resources.
+ext_upd=Does 3DNUS need to Check for Updates for the Ext.</p>
+
+<p>ext_external_res="0\_bin", "0\_res", "1\_sys\upd"  &lt;---- Resources to Mount
+ext_reset=0  &lt;---- Can the Extension cause 3DNUS to Restart or Reset?</p>
+
+<p>The icon needs to be an .ico or .png(Needs to be Named ext_icon.png; and placed in the Root Folder) Max Res is: 512x512 at 256bit Color. 
+The Extension will be Compiled as a .ext (the Ext_Manager will install these Files to the Selected Slot #), the Resources will be placed in the _res folder, and the components will be placed in _bin, any other Files will be placed in _junk(That weren't assigned a Folder).</p>
+
+<p>Code can be compiled in Visual Studio 2010/2013/2015, and in the DevKit (Only Scripts). 
+The Main Lang is "C", but "C++, C#, and Java-Script" can be used as well. </p>
+
+<p>Ex for Code (H; It's pretty Long, it's the SDFAT Lib for VNM):
+Remember, to go to a Line, use a <a href="https://github.com/label" class="user-mention">@label</a> for a Line or Section of Code. 
+The Section/Line will end at the Next <a href="https://github.com/label" class="user-mention">@label</a>, so remember to label your Sections! Ex: "<a href="https://github.com/main" class="user-mention">@main</a>" then use "goto <a href="https://github.com/main" class="user-mention">@main</a> or <a href="https://github.com/label" class="user-mention">@label</a>" to goto that Line/Section, without quotes. </p>
+
+<p>To include Scripts or Resources, use "#include "file.h" without quotes. 
+Ex: "#include "main.h" " without outer quotes. ​
+Code:
+[ext_info]
+//Extension Information, Privlages, and Code for LIB_SD_Fat
+//for VNM EMU.
+//NOTE: The Following Text use's RTF ANSI Format!</p>
+
+<p>priv=2
+ext_external="\_bin","\_res"
+ext_type=default
+ext_base_lib="lib_citras","lib_win_fat","lib_3ds","lib_sdfat"
+ext_base_ver="2.5.4.6; v29376"</p>
+
+<p>//Code for Lib_sd_fat:
+//Code is Lang "H"
+//SD_FAT.h</p>
+
+<p>@SD_FAT.h</p>
+
+<p>/* Arduino SdFat Library</p>
+
+<ul>
+<li>Copyright (C) 2012 by William Greiman
+*</li>
+<li>This file is part of the Arduino SdFat Library
+*</li>
+<li>This Library is free software: you can redistribute it and/or modify</li>
+<li>it under the terms of the GNU General Public License as published by</li>
+<li>the Free Software Foundation, either version 3 of the License, or</li>
+<li>(at your option) any later version.
+*</li>
+<li>This Library is distributed in the hope that it will be useful,</li>
+<li>but WITHOUT ANY WARRANTY; without even the implied warranty of</li>
+<li>MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</li>
+<li>GNU General Public License for more details.
+*</li>
+<li>You should have received a copy of the GNU General Public License</li>
+<li>along with the Arduino SdFat Library.  If not, see</li>
+<li>&lt;" rel="nofollow"&gt;<a href="http://www.gnu.org/licenses/%3E">http://www.gnu.org/licenses/&gt;</a>.
+<em>/
+#ifndef SdFat_h
+#define SdFat_h
+/</em>*</li>
+<li>\file</li>
+<li>\brief SdFat class
+<em>/
+#include "SdSpiCard.h"
+#include "utility/FatLib.h"
+//------------------------------------------------------------------------------
+/</em>* SdFat version YYYYMMDD <em>/
+#define SD_FAT_VERSION 20150324
+//==============================================================================
+/</em>*</li>
+<li>\class SdBaseFile</li>
+<li>\brief Class for backward compatibility.
+<em>/
+class SdBaseFile : public FatFile {
+public:
+SdBaseFile() {}
+/</em>*  Create a file object and open it in the current working directory.
+*
+
+<ul>
+<li>\param[in] path A path for a file to be opened.
+*</li>
+<li>\param[in] oflag Values for \a oflag are constructed by a</li>
+<li>bitwise-inclusive OR of open flags. see</li>
+<li>FatFile::open(FatFile<em>, const char</em>, uint8_t).
+<em>/
+SdBaseFile(const char</em> path, uint8_t oflag) : FatFile(path, oflag) {}
+};
+#if ENABLE_ARDUINO_FEATURES
+/**</li>
+</ul>
+</li>
+<li>\class SdFile</li>
+<li>\brief Class for backward compatibility.
+*/</li>
+</ul>
+
+<p>class SdFile : public PrintFile {
+public:
+  SdFile() {}
+  /**  Create a file object and open it in the current working directory.
+   *</p>
+
+<ul>
+<li>\param[in] path A path for a file to be opened.
+*</li>
+<li>\param[in] oflag Values for \a oflag are constructed by a</li>
+<li>bitwise-inclusive OR of open flags. see</li>
+<li>FatFile::open(FatFile<em>, const char</em>, uint8_t).
+<em>/
+SdFile(const char</em> path, uint8_t oflag) : PrintFile(path, oflag) {}
+};
+#endif  // #if ENABLE_ARDUINO_FEATURES
+/**
+
+<ul>
+<li>\class SdFatBase</li>
+<li>\brief Virtual base class for %SdFat library.
+<em>/
+class SdFatBase : public FatFileSystem {
+public:
+/</em>* Initialize SD card and file system.</li>
+</ul>
+</li>
+<li>\param[in] spi SPI object for the card.</li>
+<li>\param[in] csPin SD card chip select pin.</li>
+<li>\param[in] divisor SPI divisor.</li>
+<li>\return true for success else false.
+<em>/
+bool begin(SdSpiCard::m_spi_t</em> spi, uint8_t csPin = SS, uint8_t divisor = 2) {
+  return m_sdCard.begin(spi, csPin, divisor) &amp;&amp;
+         FatFileSystem::begin();
+}
+/** \return Pointer to SD card object <em>/
+SdSpiCard *card() {
+  return &amp;m_sdCard;
+}
+/</em>* %Print any SD error code to Serial and halt. <em>/
+void errorHalt() {
+  errorHalt(&amp;Serial);
+}
+/</em>* %Print any SD error code and halt.
+*</li>
+<li>\param[in] pr Print destination.
+<em>/
+void errorHalt(Print</em> pr);
+/** %Print msg, any SD error code and halt.
+*</li>
+<li>\param[in] msg Message to print.
+<em>/
+void errorHalt(char const</em> msg) {
+  errorHalt(&amp;Serial, msg);
+}
+/** %Print msg, any SD error code, and halt.
+*</li>
+<li>\param[in] pr Print destination.</li>
+<li>\param[in] msg Message to print.
+<em>/
+void errorHalt(Print</em> pr, char const* msg);
+/** %Print msg, any SD error code, and halt.
+*</li>
+<li>\param[in] msg Message to print.
+<em>/
+void errorHalt(const __FlashStringHelper</em> msg) {
+  errorHalt(&amp;Serial, msg);
+}
+/** %Print msg, any SD error code, and halt.
+*</li>
+<li>\param[in] pr Print destination.</li>
+<li>\param[in] msg Message to print.
+<em>/
+void errorHalt(Print</em> pr, const __FlashStringHelper* msg);
+/** %Print any SD error code to Serial <em>/
+void errorPrint() {
+  errorPrint(&amp;Serial);
+}
+/</em>* %Print any SD error code.</li>
+<li>\param[in] pr Print device.
+<em>/
+void errorPrint(Print</em> pr);
+/** %Print msg, any SD error code.
+*</li>
+<li>\param[in] msg Message to print.
+<em>/
+void errorPrint(const char</em> msg) {
+  errorPrint(&amp;Serial, msg);
+}
+/** %Print msg, any SD error code.
+*</li>
+<li>\param[in] pr Print destination.</li>
+<li>\param[in] msg Message to print.
+<em>/
+void errorPrint(Print</em> pr, char const* msg);
+/** %Print msg, any SD error code.
+*</li>
+<li>\param[in] msg Message to print.
+<em>/
+void errorPrint(const __FlashStringHelper</em> msg) {
+  errorPrint(&amp;Serial, msg);
+}
+/** %Print msg, any SD error code.
+*</li>
+<li>\param[in] pr Print destination.</li>
+<li>\param[in] msg Message to print.
+<em>/
+void errorPrint(Print</em> pr, const __FlashStringHelper* msg);
+/** Diagnostic call to initialize FatFileSystem - use for</li>
+<li> diagnostic purposes only.</li>
+<li> \return true for success else false.
+<em>/
+bool fsBegin() {
+  return FatFileSystem::begin();
+}
+/</em>* %Print any SD error code and halt. <em>/
+void initErrorHalt() {
+  initErrorHalt(&amp;Serial);
+}
+/</em>* %Print error details and halt after begin fails.
+*</li>
+<li>\param[in] pr Print destination.
+<em>/
+void initErrorHalt(Print</em> pr);
+/**Print message, error details, and halt after SdFat::init() fails.
+*</li>
+<li>\param[in] msg Message to print.
+<em>/
+void initErrorHalt(char const *msg) {
+  initErrorHalt(&amp;Serial, msg);
+}
+/</em>*Print message, error details, and halt after SdFatBase::init() fails.</li>
+<li>\param[in] pr Print device.</li>
+<li>\param[in] msg Message to print.
+<em>/
+void initErrorHalt(Print</em> pr, char const <em>msg);
+/</em>*Print message, error details, and halt after SdFat::init() fails.
+  *
+
+<ul>
+<li>\param[in] msg Message to print.
+<em>/
+void initErrorHalt(const __FlashStringHelper</em> msg) {
+initErrorHalt(&amp;Serial, msg);
+}
+/**Print message, error details, and halt after SdFatBase::init() fails.</li>
+</ul>
+</li>
+<li>\param[in] pr Print device for message.</li>
+<li>\param[in] msg Message to print.
+<em>/
+void initErrorHalt(Print</em> pr, const __FlashStringHelper* msg);
+/** Print error details after SdFat::init() fails. <em>/
+void initErrorPrint() {
+  initErrorPrint(&amp;Serial);
+}
+/</em>* Print error details after SdFatBase::init() fails.
+*</li>
+<li>\param[in] pr Print destination.
+<em>/
+void initErrorPrint(Print</em> pr);
+/**Print message and error details and halt after SdFat::init() fails.
+*</li>
+<li>\param[in] msg Message to print.
+<em>/
+void initErrorPrint(char const *msg) {
+  initErrorPrint(&amp;Serial, msg);
+}
+/</em>*Print message and error details and halt after SdFatBase::init() fails.
+*</li>
+<li>\param[in] pr Print destination.</li>
+<li>\param[in] msg Message to print.
+<em>/
+void initErrorPrint(Print</em> pr, char const <em>msg);
+/</em>*Print message and error details and halt after SdFat::init() fails.
+*</li>
+<li>\param[in] msg Message to print.
+<em>/
+void initErrorPrint(const __FlashStringHelper</em> msg) {
+  initErrorPrint(&amp;Serial, msg);
+}
+/**Print message and error details and halt after SdFatBase::init() fails.
+*</li>
+<li>\param[in] pr Print destination.</li>
+<li>\param[in] msg Message to print.
+<em>/
+void initErrorPrint(Print</em> pr, const __FlashStringHelper* msg);</li>
+</ul>
+
+<p>private:
+  uint8_t cardErrorCode() {
+    return m_sdCard.errorCode();
+  }
+  uint8_t cardErrorData() {
+    return m_sdCard.errorData();
+  }
+  bool readBlock(uint32_t block, uint8_t* dst) {
+    return m_sdCard.readBlock(block, dst);
+  }
+  bool writeBlock(uint32_t block, const uint8_t* src) {
+    return m_sdCard.writeBlock(block, src);
+  }
+  bool readBlocks(uint32_t block, uint8_t* dst, size_t n) {
+    return m_sdCard.readBlocks(block, dst, n);
+  }
+  bool writeBlocks(uint32_t block, const uint8_t* src, size_t n) {
+    return m_sdCard.writeBlocks(block, src, n);
+  }
+  SdSpiCard m_sdCard;
+};
+//==============================================================================
+/**</p>
+
+<ul>
+<li>\class SdFat</li>
+<li>\brief Main file system class for %SdFat library.
+<em>/
+class SdFat : public SdFatBase {
+public:
+/</em>* Initialize SD card and file system.
+*
+
+<ul>
+<li>\param[in] csPin SD card chip select pin.</li>
+<li>\param[in] divisor SPI divisor.</li>
+<li>\return true for success else false.
+<em>/
+bool begin(uint8_t csPin = SS, uint8_t divisor = 2) {
+return SdFatBase::begin(&amp;m_spi, csPin, divisor);
+}
+/</em>* Diagnostic call to initialize SD card - use for diagnostic purposes only.</li>
+<li>\param[in] csPin SD card chip select pin.</li>
+<li>\param[in] divisor SPI divisor.</li>
+<li>\return true for success else false.
+<em>/
+bool cardBegin(uint8_t csPin = SS, uint8_t divisor = 2) {
+return card()-&gt;begin(&amp;m_spi, csPin, divisor);
+}
+private:
+SpiDefault_t m_spi;
+};
+//==============================================================================
+#if SD_SPI_CONFIGURATION &gt;= 3 || defined(DOXYGEN)
+/</em>*</li>
+</ul>
+</li>
+<li>\class SdFatLibSpi</li>
+<li>\brief SdFat class using the standard Arduino SPI library.
+<em>/
+class SdFatLibSpi: public SdFatBase {
+public:
+/</em>* Initialize SD card and file system.
+*
+
+<ul>
+<li>\param[in] csPin SD card chip select pin.</li>
+<li>\param[in] divisor SPI divisor.</li>
+<li>\return true for success else false.
+<em>/
+bool begin(uint8_t csPin = SS, uint8_t divisor = 2) {
+return SdFatBase::begin(&amp;m_spi, csPin, divisor);
+}
+/</em>* Diagnostic call to initialize SD card - use for diagnostic purposes only.</li>
+<li>\param[in] csPin SD card chip select pin.</li>
+<li>\param[in] divisor SPI divisor.</li>
+<li>\return true for success else false.
+*/
+bool cardBegin(uint8_t csPin = SS, uint8_t divisor = 2) {
+return card()-&gt;begin(&amp;m_spi, csPin, divisor);
+}</li>
+</ul>
+</li>
+</ul>
+
+<p>private:
+  SdSpiLib m_spi;
+};
+//==============================================================================
+/**</p>
+
+<ul>
+<li>\class SdFatSoftSpi</li>
+<li>\brief SdFat class using software SPI.
+<em>/
+template
+class SdFatSoftSpi : public SdFatBase {
+public:
+/</em>* Initialize SD card and file system.
+*
+
+<ul>
+<li>\param[in] csPin SD card chip select pin.</li>
+<li>\param[in] divisor SPI divisor.</li>
+<li>\return true for success else false.
+<em>/
+bool begin(uint8_t csPin = SS, uint8_t divisor = 2) {
+return SdFatBase::begin(&amp;m_spi, csPin, divisor);
+}
+/</em>* Diagnostic call to initialize SD card - use for diagnostic purposes only.</li>
+<li>\param[in] csPin SD card chip select pin.</li>
+<li>\param[in] divisor SPI divisor.</li>
+<li>\return true for success else false.
+*/
+bool cardBegin(uint8_t csPin = SS, uint8_t divisor = 2) {
+return card()-&gt;begin(&amp;m_spi, csPin, divisor);
+}</li>
+</ul>
+</li>
+</ul>
+
+<p>private:
+  SdSpiSoft m_spi;
+};</p>
+
+<h1>
+<a id="endif---sd_spi_configuration--3--defineddoxygen" class="anchor" href="#endif---sd_spi_configuration--3--defineddoxygen" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>endif  /// SD_SPI_CONFIGURATION &gt;= 3 || defined(DOXYGEN)</h1>
+
+<h1>
+<a id="endif---sdfat_h" class="anchor" href="#endif---sdfat_h" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>endif  // SdFat_h</h1>
+
+<p>//SDFAT_BASE.cpp:</p>
+
+<p>@SDFAT_BASE.cpp</p>
+
+<p>/* Arduino SdFat Library</p>
+
+<ul>
+<li>Copyright (C) 2012 by William Greiman
+*</li>
+<li>This file is part of the Arduino SdFat Library
+*</li>
+<li>This Library is free software: you can redistribute it and/or modify</li>
+<li>it under the terms of the GNU General Public License as published by</li>
+<li>the Free Software Foundation, either version 3 of the License, or</li>
+<li>(at your option) any later version.
+*</li>
+<li>This Library is distributed in the hope that it will be useful,</li>
+<li>but WITHOUT ANY WARRANTY; without even the implied warranty of</li>
+<li>MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</li>
+<li>GNU General Public License for more details.
+*</li>
+<li>You should have received a copy of the GNU General Public License</li>
+<li>along with the Arduino SdFat Library.  If not, see</li>
+<li>&lt;" rel="nofollow"&gt;<a href="http://www.gnu.org/licenses/%3E">http://www.gnu.org/licenses/&gt;</a>.
+<em>/
+#include "SdFat.h"
+//------------------------------------------------------------------------------
+void SdFatBase::errorHalt(Print</em> pr) {
+errorPrint(pr);
+while (1) {}
+}
+//------------------------------------------------------------------------------
+void SdFatBase::errorHalt(Print* pr, char const* msg) {
+errorPrint(pr, msg);
+while (1) {}
+}
+//------------------------------------------------------------------------------
+void SdFatBase::errorHalt(Print* pr, const __FlashStringHelper* msg) {
+errorPrint(pr, msg);
+while (1) {}
+}
+//------------------------------------------------------------------------------
+void SdFatBase::errorPrint(Print* pr) {
+if (!cardErrorCode()) {
+  return;
+}
+pr-&gt;print(F("SD errorCode: 0X"));
+pr-&gt;print(cardErrorCode(), HEX);
+pr-&gt;print(F(",0X"));
+pr-&gt;println(cardErrorData(), HEX);
+}
+//------------------------------------------------------------------------------
+void SdFatBase::errorPrint(Print* pr, char const* msg) {
+pr-&gt;print(F("error: "));
+pr-&gt;println(msg);
+errorPrint(pr);
+}
+//------------------------------------------------------------------------------
+void SdFatBase::errorPrint(Print* pr, const __FlashStringHelper* msg) {
+pr-&gt;print(F("error: "));
+pr-&gt;println(msg);
+errorPrint(pr);
+}
+//------------------------------------------------------------------------------
+void SdFatBase::initErrorHalt(Print* pr) {
+initErrorPrint(pr);
+while (1) {}
+}
+//------------------------------------------------------------------------------
+void SdFatBase::initErrorHalt(Print* pr, char const <em>msg) {
+pr-&gt;println(msg);
+initErrorHalt(pr);
+}
+//------------------------------------------------------------------------------
+void SdFatBase::initErrorHalt(Print</em> pr, const __FlashStringHelper* msg) {
+pr-&gt;println(msg);
+initErrorHalt(pr);
+}
+//------------------------------------------------------------------------------
+void SdFatBase::initErrorPrint(Print* pr) {
+if (cardErrorCode()) {
+  pr-&gt;println(F("Can't access SD card. Do not reformat."));
+  if (cardErrorCode() == SD_CARD_ERROR_CMD0) {
+    pr-&gt;println(F("No card, wrong chip select pin, or SPI problem?"));
+  }
+  errorPrint(pr);
+} else if (vol()-&gt;fatType() == 0) {
+  pr-&gt;println(F("Invalid format, reformat SD."));
+} else if (!vwd()-&gt;isOpen()) {
+  pr-&gt;println(F("Can't open root directory."));
+} else {
+  pr-&gt;println(F("No error found."));
+}
+}
+//------------------------------------------------------------------------------
+void SdFatBase::initErrorPrint(Print* pr, char const <em>msg) {
+pr-&gt;println(msg);
+initErrorPrint(pr);
+}
+//------------------------------------------------------------------------------
+void SdFatBase::initErrorPrint(Print</em> pr, const __FlashStringHelper* msg) {
+pr-&gt;println(msg);
+initErrorPrint(pr);
+}</li>
+</ul>
+
+<p>//SDFAT_CONFIG.h:</p>
+
+<p>@SDFAT_CONFIG.h</p>
+
+<p>/* Arduino SdFat Library</p>
+
+<ul>
+<li>Copyright (C) 2012 by William Greiman
+*</li>
+<li>This file is part of the Arduino SdFat Library
+*</li>
+<li>This Library is free software: you can redistribute it and/or modify</li>
+<li>it under the terms of the GNU General Public License as published by</li>
+<li>the Free Software Foundation, either version 3 of the License, or</li>
+<li>(at your option) any later version.
+*</li>
+<li>This Library is distributed in the hope that it will be useful,</li>
+<li>but WITHOUT ANY WARRANTY; without even the implied warranty of</li>
+<li>MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</li>
+<li>GNU General Public License for more details.
+*</li>
+<li>You should have received a copy of the GNU General Public License</li>
+<li>along with the Arduino SdFat Library.  If not, see</li>
+<li>&lt;" rel="nofollow"&gt;<a href="http://www.gnu.org/licenses/%3E">http://www.gnu.org/licenses/&gt;</a>.
+<em>/
+#include "SdFat.h"
+//------------------------------------------------------------------------------
+void SdFatBase::errorHalt(Print</em> pr) {
+errorPrint(pr);
+while (1) {}
+}
+//------------------------------------------------------------------------------
+void SdFatBase::errorHalt(Print* pr, char const* msg) {
+errorPrint(pr, msg);
+while (1) {}
+}
+//------------------------------------------------------------------------------
+void SdFatBase::errorHalt(Print* pr, const __FlashStringHelper* msg) {
+errorPrint(pr, msg);
+while (1) {}
+}
+//------------------------------------------------------------------------------
+void SdFatBase::errorPrint(Print* pr) {
+if (!cardErrorCode()) {
+  return;
+}
+pr-&gt;print(F("SD errorCode: 0X"));
+pr-&gt;print(cardErrorCode(), HEX);
+pr-&gt;print(F(",0X"));
+pr-&gt;println(cardErrorData(), HEX);
+}
+//------------------------------------------------------------------------------
+void SdFatBase::errorPrint(Print* pr, char const* msg) {
+pr-&gt;print(F("error: "));
+pr-&gt;println(msg);
+errorPrint(pr);
+}
+//------------------------------------------------------------------------------
+void SdFatBase::errorPrint(Print* pr, const __FlashStringHelper* msg) {
+pr-&gt;print(F("error: "));
+pr-&gt;println(msg);
+errorPrint(pr);
+}
+//------------------------------------------------------------------------------
+void SdFatBase::initErrorHalt(Print* pr) {
+initErrorPrint(pr);
+while (1) {}
+}
+//------------------------------------------------------------------------------
+void SdFatBase::initErrorHalt(Print* pr, char const <em>msg) {
+pr-&gt;println(msg);
+initErrorHalt(pr);
+}
+//------------------------------------------------------------------------------
+void SdFatBase::initErrorHalt(Print</em> pr, const __FlashStringHelper* msg) {
+pr-&gt;println(msg);
+initErrorHalt(pr);
+}
+//------------------------------------------------------------------------------
+void SdFatBase::initErrorPrint(Print* pr) {
+if (cardErrorCode()) {
+  pr-&gt;println(F("Can't access SD card. Do not reformat."));
+  if (cardErrorCode() == SD_CARD_ERROR_CMD0) {
+    pr-&gt;println(F("No card, wrong chip select pin, or SPI problem?"));
+  }
+  errorPrint(pr);
+} else if (vol()-&gt;fatType() == 0) {
+  pr-&gt;println(F("Invalid format, reformat SD."));
+} else if (!vwd()-&gt;isOpen()) {
+  pr-&gt;println(F("Can't open root directory."));
+} else {
+  pr-&gt;println(F("No error found."));
+}
+}
+//------------------------------------------------------------------------------
+void SdFatBase::initErrorPrint(Print* pr, char const <em>msg) {
+pr-&gt;println(msg);
+initErrorPrint(pr);
+}
+//------------------------------------------------------------------------------
+void SdFatBase::initErrorPrint(Print</em> pr, const __FlashStringHelper* msg) {
+pr-&gt;println(msg);
+initErrorPrint(pr);
+}</li>
+</ul>
+
+<p>//SDFAT_VOL.h:</p>
+
+<p>@SDFAT_VOL.h</p>
+
+<p>/* Arduino SdFat Library</p>
+
+<ul>
+<li>Copyright (C) 2012 by William Greiman
+*</li>
+<li>This file is part of the Arduino SdFat Library
+*</li>
+<li>This Library is free software: you can redistribute it and/or modify</li>
+<li>it under the terms of the GNU General Public License as published by</li>
+<li>the Free Software Foundation, either version 3 of the License, or</li>
+<li>(at your option) any later version.
+*</li>
+<li>This Library is distributed in the hope that it will be useful,</li>
+<li>but WITHOUT ANY WARRANTY; without even the implied warranty of</li>
+<li>MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</li>
+<li>GNU General Public License for more details.
+*</li>
+<li>You should have received a copy of the GNU General Public License</li>
+<li>along with the Arduino SdFat Library.  If not, see</li>
+<li>&lt;" rel="nofollow"&gt;<a href="http://www.gnu.org/licenses/%3E">http://www.gnu.org/licenses/&gt;</a>.
+<em>/
+#ifndef SdVolume_h
+#include "SdSpiCard.h"
+#include "utility/FatLib.h"
+#define SdVolume_h
+#ifndef USE_SD_VOLUME
+#error SdVolume is deperacated.  Remove this line to continue using this class.
+#endif   // USE_SD_VOLUME
+//==============================================================================
+/</em>*</li>
+<li>\class SdVolume</li>
+<li>\brief SdVolume Soon to be removed.
+<em>/
+class SdVolume : public FatVolume {
+public:
+/</em>* Initialize a FAT volume.  Try partition one first then try super
+
+<ul>
+<li>floppy format.
+*</li>
+<li>\param[in] dev The Sd2Card where the volume is located.
+*</li>
+<li>\return true for success else false.
+<em>/
+bool init(Sd2Card</em> dev) {
+return init(dev, 1) ? true : init(dev, 0);
+}
+/** Initialize a FAT volume.
+*</li>
+<li>\param[in] dev The Sd2Card where the volume is located.</li>
+<li>\param[in] part the partition to use. Zero for super floppy or 1-4.</li>
+<li>\return true for success else false.
+<em>/
+bool init(Sd2Card</em> dev, uint8_t part) {
+m_sdCard = dev;
+return FatVolume::init(part);
+}</li>
+</ul>
+</li>
+</ul>
+
+<p>private:
+//  friend class FatFile;
+  bool readBlock(uint32_t block, uint8_t* dst) {
+    return m_sdCard-&gt;readBlock(block, dst);
+  }
+  bool writeBlock(uint32_t block, const uint8_t* src) {
+    return m_sdCard-&gt;writeBlock(block, src);
+  }
+  bool readBlocks(uint32_t block, uint8_t* dst, size_t n) {
+    return m_sdCard-&gt;readBlocks(block, dst, n);
+  }
+  bool writeBlocks(uint32_t block, const uint8_t* src, size_t n) {
+    return m_sdCard-&gt;writeBlocks(block, src, n);
+  }
+  Sd2Card* m_sdCard;             // Sd2Card object for cache
+};</p>
+
+<h1>
+<a id="endif---sdvolume_h" class="anchor" href="#endif---sdvolume_h" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>endif  // SdVolume_h</h1>
+
+<p>//SDFAT_UTIL.h:</p>
+
+<p>@SDFAT_UTIL.h</p>
+
+<p>/* Arduino SdFat Library</p>
+
+<ul>
+<li>Copyright (C) 2012 by William Greiman
+*</li>
+<li>This file is part of the Arduino SdFat Library
+*</li>
+<li>This Library is free software: you can redistribute it and/or modify</li>
+<li>it under the terms of the GNU General Public License as published by</li>
+<li>the Free Software Foundation, either version 3 of the License, or</li>
+<li>(at your option) any later version.
+*</li>
+<li>This Library is distributed in the hope that it will be useful,</li>
+<li>but WITHOUT ANY WARRANTY; without even the implied warranty of</li>
+<li>MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</li>
+<li>GNU General Public License for more details.
+*</li>
+<li>You should have received a copy of the GNU General Public License</li>
+<li>along with the Arduino SdFat Library.  If not, see</li>
+<li>&lt;" rel="nofollow"&gt;<a href="http://www.gnu.org/licenses/%3E">http://www.gnu.org/licenses/&gt;</a>.
+<em>/
+#ifndef SdFatUtil_h
+#define SdFatUtil_h
+/</em>*</li>
+<li>\file</li>
+<li>\brief Useful utility functions.
+<em>/
+#include "SdFat.h"
+/</em>* Store and print a string in flash memory.<em>/
+#define PgmPrint(x) SerialPrint_P(PSTR(x))
+/</em>* Store and print a string in flash memory followed by a CR/LF.*/
+#define PgmPrintln(x) SerialPrintln_P(PSTR(x))</li>
+</ul>
+
+<p>namespace SdFatUtil {
+  /** Amount of free RAM</p>
+
+<ul>
+<li>\return The number of free bytes.
+<em>/
+int FreeRam();
+/</em>* %Print a string in flash memory.
+*</li>
+<li>\param[in] pr Print object for output.</li>
+<li>\param[in] str Pointer to string stored in flash memory.
+<em>/
+void print_P(Print</em> pr, PGM_P str);
+/** %Print a string in flash memory followed by a CR/LF.
+*</li>
+<li>\param[in] pr Print object for output.</li>
+<li>\param[in] str Pointer to string stored in flash memory.
+<em>/
+void println_P(Print</em> pr, PGM_P str);
+//----------------------------------------------------------------------------
+/** %Print a string in flash memory to Serial.
+*</li>
+<li>\param[in] str Pointer to string stored in flash memory.
+<em>/
+inline void SerialPrint_P(PGM_P str) {
+  print_P(&amp;Serial, str);
+}
+//----------------------------------------------------------------------------
+/</em>* %Print a string in flash memory to Serial followed by a CR/LF.
+*</li>
+<li>\param[in] str Pointer to string stored in flash memory.
+*/
+inline void SerialPrintln_P(PGM_P str) {
+  println_P(&amp;Serial, str);
+}
+}  // namespace SdFatUtil
+using namespace SdFatUtil;  // NOLINT
+#endif  // #define SdFatUtil_h</li>
+</ul>
+
+<p>//SD_INFO.h:</p>
+
+<p>@SD_INFO.h</p>
+
+<p>/* Arduino SdSpiCard Library</p>
+
+<ul>
+<li>Copyright (C) 2012 by William Greiman
+*</li>
+<li>This file is part of the Arduino SdSpiCard Library
+*</li>
+<li>This Library is free software: you can redistribute it and/or modify</li>
+<li>it under the terms of the GNU General Public License as published by</li>
+<li>the Free Software Foundation, either version 3 of the License, or</li>
+<li>(at your option) any later version.
+*</li>
+<li>This Library is distributed in the hope that it will be useful,</li>
+<li>but WITHOUT ANY WARRANTY; without even the implied warranty of</li>
+<li>MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</li>
+<li>GNU General Public License for more details.
+*</li>
+<li>You should have received a copy of the GNU General Public License</li>
+<li>along with the Arduino SdSpiCard Library.  If not, see</li>
+<li>&lt;" rel="nofollow"&gt;<a href="http://www.gnu.org/licenses/%3E">http://www.gnu.org/licenses/&gt;</a>.
+<em>/
+#ifndef SdInfo_h
+#define SdInfo_h
+#include 
+// Based on the document:
+//
+// SD Specifications
+// Part 1
+// Physical Layer
+// Simplified Specification
+// Version 3.01
+// May 18, 2010
+//
+// <a href="http://www.sdcard.org/developers/tech/sdcard/pls/simplified_specs">http://www.sdcard.org/developers/tech/sdcard/pls/simplified_specs</a>
+//------------------------------------------------------------------------------
+// SD card errors
+/</em>* timeout error for command CMD0 (initialize card in SPI mode) <em>/
+uint8_t const SD_CARD_ERROR_CMD0 = 0X1;
+/</em>* CMD8 was not accepted - not a valid SD card<em>/
+uint8_t const SD_CARD_ERROR_CMD8 = 0X2;
+/</em>* card returned an error response for CMD12 (stop multiblock read) <em>/
+uint8_t const SD_CARD_ERROR_CMD12 = 0X3;
+/</em>* card returned an error response for CMD17 (read block) <em>/
+uint8_t const SD_CARD_ERROR_CMD17 = 0X4;
+/</em>* card returned an error response for CMD18 (read multiple block) <em>/
+uint8_t const SD_CARD_ERROR_CMD18 = 0X5;
+/</em>* card returned an error response for CMD24 (write block) <em>/
+uint8_t const SD_CARD_ERROR_CMD24 = 0X6;
+/</em>*  WRITE_MULTIPLE_BLOCKS command failed <em>/
+uint8_t const SD_CARD_ERROR_CMD25 = 0X7;
+/</em>* card returned an error response for CMD58 (read OCR) <em>/
+uint8_t const SD_CARD_ERROR_CMD58 = 0X8;
+/</em>* SET_WR_BLK_ERASE_COUNT failed <em>/
+uint8_t const SD_CARD_ERROR_ACMD23 = 0X9;
+/</em>* ACMD41 initialization process timeout <em>/
+uint8_t const SD_CARD_ERROR_ACMD41 = 0XA;
+/</em>* card returned a bad CSR version field <em>/
+uint8_t const SD_CARD_ERROR_BAD_CSD = 0XB;
+/</em>* erase block group command failed <em>/
+uint8_t const SD_CARD_ERROR_ERASE = 0XC;
+/</em>* card not capable of single block erase <em>/
+uint8_t const SD_CARD_ERROR_ERASE_SINGLE_BLOCK = 0XD;
+/</em>* Erase sequence timed out <em>/
+uint8_t const SD_CARD_ERROR_ERASE_TIMEOUT = 0XE;
+/</em>* card returned an error token instead of read data <em>/
+uint8_t const SD_CARD_ERROR_READ = 0XF;
+/</em>* read CID or CSD failed <em>/
+uint8_t const SD_CARD_ERROR_READ_REG = 0X10;
+/</em>* timeout while waiting for start of read data <em>/
+uint8_t const SD_CARD_ERROR_READ_TIMEOUT = 0X11;
+/</em>* card did not accept STOP_TRAN_TOKEN <em>/
+uint8_t const SD_CARD_ERROR_STOP_TRAN = 0X12;
+/</em>* card returned an error token as a response to a write operation <em>/
+uint8_t const SD_CARD_ERROR_WRITE = 0X13;
+/</em>* attempt to write protected block zero <em>/
+uint8_t const SD_CARD_ERROR_WRITE_BLOCK_ZERO = 0X14;  // REMOVE - not used
+/</em>* card did not go ready for a multiple block write <em>/
+uint8_t const SD_CARD_ERROR_WRITE_MULTIPLE = 0X15;
+/</em>* card returned an error to a CMD13 status check after a write <em>/
+uint8_t const SD_CARD_ERROR_WRITE_PROGRAMMING = 0X16;
+/</em>* timeout occurred during write programming <em>/
+uint8_t const SD_CARD_ERROR_WRITE_TIMEOUT = 0X17;
+/</em>* incorrect rate selected <em>/
+uint8_t const SD_CARD_ERROR_SCK_RATE = 0X18;
+/</em>* init() not called <em>/
+uint8_t const SD_CARD_ERROR_INIT_NOT_CALLED = 0X19;
+/</em>* card returned an error for CMD59 (CRC_ON_OFF) <em>/
+uint8_t const SD_CARD_ERROR_CMD59 = 0X1A;
+/</em>* invalid read CRC <em>/
+uint8_t const SD_CARD_ERROR_READ_CRC = 0X1B;
+/</em>* SPI DMA error <em>/
+uint8_t const SD_CARD_ERROR_SPI_DMA = 0X1C;
+//------------------------------------------------------------------------------
+// card types
+/</em>* Standard capacity V1 SD card <em>/
+uint8_t const SD_CARD_TYPE_SD1  = 1;
+/</em>* Standard capacity V2 SD card <em>/
+uint8_t const SD_CARD_TYPE_SD2  = 2;
+/</em>* High Capacity SD card <em>/
+uint8_t const SD_CARD_TYPE_SDHC = 3;
+//------------------------------------------------------------------------------
+// SPI divisor constants
+/</em>* Set SCK to max rate of F_CPU/2. <em>/
+uint8_t const SPI_FULL_SPEED = 2;
+/</em>* Set SCK rate to F_CPU/3 for Due <em>/
+uint8_t const SPI_DIV3_SPEED = 3;
+/</em>* Set SCK rate to F_CPU/4. <em>/
+uint8_t const SPI_HALF_SPEED = 4;
+/</em>* Set SCK rate to F_CPU/6 for Due <em>/
+uint8_t const SPI_DIV6_SPEED = 6;
+/</em>* Set SCK rate to F_CPU/8. <em>/
+uint8_t const SPI_QUARTER_SPEED = 8;
+/</em>* Set SCK rate to F_CPU/16. <em>/
+uint8_t const SPI_EIGHTH_SPEED = 16;
+/</em>* Set SCK rate to F_CPU/32. <em>/
+uint8_t const SPI_SIXTEENTH_SPEED = 32;
+//------------------------------------------------------------------------------
+// SD operation timeouts
+/</em>* init timeout ms <em>/
+uint16_t const SD_INIT_TIMEOUT = 2000;
+/</em>* erase timeout ms <em>/
+uint16_t const SD_ERASE_TIMEOUT = 10000;
+/</em>* read timeout ms <em>/
+uint16_t const SD_READ_TIMEOUT = 300;
+/</em>* write time out ms <em>/
+uint16_t const SD_WRITE_TIMEOUT = 600;
+//------------------------------------------------------------------------------
+// SD card commands
+/</em>* GO_IDLE_STATE - init card in spi mode if CS low <em>/
+uint8_t const CMD0 = 0X00;
+/</em>* SEND_IF_COND - verify SD Memory Card interface operating condition.<em>/
+uint8_t const CMD8 = 0X08;
+/</em>* SEND_CSD - read the Card Specific Data (CSD register) <em>/
+uint8_t const CMD9 = 0X09;
+/</em>* SEND_CID - read the card identification information (CID register) <em>/
+uint8_t const CMD10 = 0X0A;
+/</em>* STOP_TRANSMISSION - end multiple block read sequence <em>/
+uint8_t const CMD12 = 0X0C;
+/</em>* SEND_STATUS - read the card status register <em>/
+uint8_t const CMD13 = 0X0D;
+/</em>* READ_SINGLE_BLOCK - read a single data block from the card <em>/
+uint8_t const CMD17 = 0X11;
+/</em>* READ_MULTIPLE_BLOCK - read a multiple data blocks from the card <em>/
+uint8_t const CMD18 = 0X12;
+/</em>* WRITE_BLOCK - write a single data block to the card <em>/
+uint8_t const CMD24 = 0X18;
+/</em>* WRITE_MULTIPLE_BLOCK - write blocks of data until a STOP_TRANSMISSION <em>/
+uint8_t const CMD25 = 0X19;
+/</em>* ERASE_WR_BLK_START - sets the address of the first block to be erased <em>/
+uint8_t const CMD32 = 0X20;
+/</em>* ERASE_WR_BLK_END - sets the address of the last block of the continuous
+range to be erased<em>/
+uint8_t const CMD33 = 0X21;
+/</em>* ERASE - erase all previously selected blocks <em>/
+uint8_t const CMD38 = 0X26;
+/</em>* APP_CMD - escape for application specific command <em>/
+uint8_t const CMD55 = 0X37;
+/</em>* READ_OCR - read the OCR register of a card <em>/
+uint8_t const CMD58 = 0X3A;
+/</em>* CRC_ON_OFF - enable or disable CRC checking <em>/
+uint8_t const CMD59 = 0X3B;
+/</em>* SET_WR_BLK_ERASE_COUNT - Set the number of write blocks to be
+ pre-erased before writing <em>/
+uint8_t const ACMD23 = 0X17;
+/</em>* SD_SEND_OP_COMD - Sends host capacity support information and
+activates the card's initialization process <em>/
+uint8_t const ACMD41 = 0X29;
+//==============================================================================
+/</em>* status for card in the ready state <em>/
+uint8_t const R1_READY_STATE = 0X00;
+/</em>* status for card in the idle state <em>/
+uint8_t const R1_IDLE_STATE = 0X01;
+/</em>* status bit for illegal command <em>/
+uint8_t const R1_ILLEGAL_COMMAND = 0X04;
+/</em>* start data token for read or write single block<em>/
+uint8_t const DATA_START_BLOCK = 0XFE;
+/</em>* stop token for write multiple blocks<em>/
+uint8_t const STOP_TRAN_TOKEN = 0XFD;
+/</em>* start data token for write multiple blocks<em>/
+uint8_t const WRITE_MULTIPLE_TOKEN = 0XFC;
+/</em>* mask for data response tokens after a write block operation <em>/
+uint8_t const DATA_RES_MASK = 0X1F;
+/</em>* write data accepted token <em>/
+uint8_t const DATA_RES_ACCEPTED = 0X05;
+//==============================================================================
+/</em>*</li>
+<li>\class CID</li>
+<li>\brief Card IDentification (CID) register.
+<em>/
+typedef struct CID {
+// byte 0
+/</em>* Manufacturer ID <em>/
+unsigned char mid;
+// byte 1-2
+/</em>* OEM/Application ID <em>/
+char oid[2];
+// byte 3-7
+/</em>* Product name <em>/
+char pnm[5];
+// byte 8
+/</em>* Product revision least significant digit <em>/
+unsigned char prv_m : 4;
+/</em>* Product revision most significant digit <em>/
+unsigned char prv_n : 4;
+// byte 9-12
+/</em>* Product serial number <em>/
+uint32_t psn;
+// byte 13
+/</em>* Manufacturing date year low digit <em>/
+unsigned char mdt_year_high : 4;
+/</em>* not used <em>/
+unsigned char reserved : 4;
+// byte 14
+/</em>* Manufacturing date month <em>/
+unsigned char mdt_month : 4;
+/</em>* Manufacturing date year low digit <em>/
+unsigned char mdt_year_low : 4;
+// byte 15
+/</em>* not used always 1 <em>/
+unsigned char always1 : 1;
+/</em>* CRC7 checksum <em>/
+unsigned char crc : 7;
+} <strong>attribute</strong>((packed)) cid_t;
+//==============================================================================
+/</em>*</li>
+<li>\class CSDV1</li>
+<li>\brief CSD register for version 1.00 cards .
+<em>/
+typedef struct CSDV1 {
+// byte 0
+unsigned char reserved1 : 6;
+unsigned char csd_ver : 2;
+// byte 1
+unsigned char taac;
+// byte 2
+unsigned char nsac;
+// byte 3
+unsigned char tran_speed;
+// byte 4
+unsigned char ccc_high;
+// byte 5
+unsigned char read_bl_len : 4;
+unsigned char ccc_low : 4;
+// byte 6
+unsigned char c_size_high : 2;
+unsigned char reserved2 : 2;
+unsigned char dsr_imp : 1;
+unsigned char read_blk_misalign : 1;
+unsigned char write_blk_misalign : 1;
+unsigned char read_bl_partial : 1;
+// byte 7
+unsigned char c_size_mid;
+// byte 8
+unsigned char vdd_r_curr_max : 3;
+unsigned char vdd_r_curr_min : 3;
+unsigned char c_size_low : 2;
+// byte 9
+unsigned char c_size_mult_high : 2;
+unsigned char vdd_w_cur_max : 3;
+unsigned char vdd_w_curr_min : 3;
+// byte 10
+unsigned char sector_size_high : 6;
+unsigned char erase_blk_en : 1;
+unsigned char c_size_mult_low : 1;
+// byte 11
+unsigned char wp_grp_size : 7;
+unsigned char sector_size_low : 1;
+// byte 12
+unsigned char write_bl_len_high : 2;
+unsigned char r2w_factor : 3;
+unsigned char reserved3 : 2;
+unsigned char wp_grp_enable : 1;
+// byte 13
+unsigned char reserved4 : 5;
+unsigned char write_partial : 1;
+unsigned char write_bl_len_low : 2;
+// byte 14
+unsigned char reserved5: 2;
+unsigned char file_format : 2;
+unsigned char tmp_write_protect : 1;
+unsigned char perm_write_protect : 1;
+unsigned char copy : 1;
+/</em>* Indicates the file format on the card <em>/
+unsigned char file_format_grp : 1;
+// byte 15
+unsigned char always1 : 1;
+unsigned char crc : 7;
+} <strong>attribute</strong>((packed)) csd1_t;
+//==============================================================================
+/</em>*</li>
+<li>\class CSDV2</li>
+<li>\brief CSD register for version 2.00 cards.
+<em>/
+typedef struct CSDV2 {
+// byte 0
+unsigned char reserved1 : 6;
+unsigned char csd_ver : 2;
+// byte 1
+/</em>* fixed to 0X0E <em>/
+unsigned char taac;
+// byte 2
+/</em>* fixed to 0 <em>/
+unsigned char nsac;
+// byte 3
+unsigned char tran_speed;
+// byte 4
+unsigned char ccc_high;
+// byte 5
+/</em>* This field is fixed to 9h, which indicates READ_BL_LEN=512 Byte <em>/
+unsigned char read_bl_len : 4;
+unsigned char ccc_low : 4;
+// byte 6
+/</em>* not used <em>/
+unsigned char reserved2 : 4;
+unsigned char dsr_imp : 1;
+/</em>* fixed to 0 <em>/
+unsigned char read_blk_misalign : 1;
+/</em>* fixed to 0 <em>/
+unsigned char write_blk_misalign : 1;
+/</em>* fixed to 0 - no partial read <em>/
+unsigned char read_bl_partial : 1;
+// byte 7
+/</em>* high part of card size <em>/
+unsigned char c_size_high : 6;
+/</em>* not used <em>/
+unsigned char reserved3 : 2;
+// byte 8
+/</em>* middle part of card size <em>/
+unsigned char c_size_mid;
+// byte 9
+/</em>* low part of card size <em>/
+unsigned char c_size_low;
+// byte 10
+/</em>* sector size is fixed at 64 KB <em>/
+unsigned char sector_size_high : 6;
+/</em>* fixed to 1 - erase single is supported <em>/
+unsigned char erase_blk_en : 1;
+/</em>* not used <em>/
+unsigned char reserved4 : 1;
+// byte 11
+unsigned char wp_grp_size : 7;
+/</em>* sector size is fixed at 64 KB <em>/
+unsigned char sector_size_low : 1;
+// byte 12
+/</em>* write_bl_len fixed for 512 byte blocks <em>/
+unsigned char write_bl_len_high : 2;
+/</em>* fixed value of 2 <em>/
+unsigned char r2w_factor : 3;
+/</em>* not used <em>/
+unsigned char reserved5 : 2;
+/</em>* fixed value of 0 - no write protect groups <em>/
+unsigned char wp_grp_enable : 1;
+// byte 13
+unsigned char reserved6 : 5;
+/</em>* always zero - no partial block read<em>/
+unsigned char write_partial : 1;
+/</em>* write_bl_len fixed for 512 byte blocks <em>/
+unsigned char write_bl_len_low : 2;
+// byte 14
+unsigned char reserved7: 2;
+/</em>* Do not use always 0 <em>/
+unsigned char file_format : 2;
+unsigned char tmp_write_protect : 1;
+unsigned char perm_write_protect : 1;
+unsigned char copy : 1;
+/</em>* Do not use always 0 <em>/
+unsigned char file_format_grp : 1;
+// byte 15
+/</em>* not used always 1 <em>/
+unsigned char always1 : 1;
+/</em>* checksum <em>/
+unsigned char crc : 7;
+} <strong>attribute</strong>((packed)) csd2_t;
+//==============================================================================
+/</em>*</li>
+<li>\class csd_t</li>
+<li>\brief Union of old and new style CSD register.
+*/
+union csd_t {
+csd1_t v1;
+csd2_t v2;
+};
+#endif  // SdInfo_h</li>
+</ul>
+
+<p>///END OF LIB_SD_FAT</p>
+
+<h1>
+<a id="include-lib_endh" class="anchor" href="#include-lib_endh" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>include "lib_end.h"</h1>
+
+<p>[USER=11500]<a href="https://github.com/end" class="user-mention">@end</a>[/USER]</p>
+
+<p>{
+stop
+};</p>
+
+<p>}The Code above is for the SDFAT_LIB, as you can see, it's rather simple! 
+As i said, you can also use Plain C,C++, and H. Whichever you prefer! 
+You will need to Code Extensions in Visual Studio 2010, 2013, or 2015 (Community or Express). The DevKit is only for Writing Short Scripts, and Making the ext_info.c as well as some other Info Files and Scripts. 
+After Compiling your Extension in VS, you need to name the Executable boot_ext.exe. Then, any other Resources will need to be placed in the _res or _bin folders. Your Extension will need to load Resources from those folders, or the Root Slot Folder. There are 12 Slots for now, but in the Future, slot's will no longer be used, instead the Folders will be named the Extension's name, and the Ext_manager will load each folder and it's ext_info.c file. I can't wait to see what people come up with! As of now, this doesn't work. But, soon all slot's will work (Next Few Builds or so). Happy Coding! </p>
+
+<p>Q: How does Signing Work? 
+The DevKit will Automatically Check for your Dev ID and Will sign the Extension.
+To obtain a Dev ID, you'll need to Contact me. I will then Generate a Random ID Number. You'll need to Enter it in the DevKit's Settings Menu.
+The ID's will be on the Repo's Server, but cannot be Accessed by users. The DevKit and 3DNUS will read these ID's, and Will verify if the Extension(s) has a Valid ID or Not.</p>
+
+<p>Q: The Updater or other Windows are cut off, or they aren't properly Displayed!
+This seems to be a small issue, until there is a fix. This seems to be a Problem with Higher Resolutions (Ex: 1920x1080x32).</p>
+
+<blockquote>
 <p>Pointless Copyright that Nobody reads: </p>
 </blockquote>
 
@@ -319,6 +1598,8 @@ Nobody should be restricted by the software they use. There are four freedoms th
 <p>And taken as a whole, all these upgrades represent something more: we made a better copyleft. It does more to protect users' freedom, but it also enables more cooperation in the free software community. But updating the license is only part of the job: in order for people to get the benefits it offers, developers need to use GPLv3 for their projects, too. By releasing your own software under the new license, everyone who deals with it—users, other developers, distributors, even lawyers—will benefit. We hope you'll use GPLv3 for your next release.</p>
 
 <p>If you'd like to learn more about upgrading your project to GPLv3, the FSF Compliance Lab would be happy to assist you. On our web site, you can find basic instructions for using the license, and an FAQ addressing common concerns that people have about it. If your situation is more complicated than that, please contact us and we'll do what we can to help you with your transition. Together, we can help protect freedom for all users.</p>
+
+<hr>
         </section>
 
         <footer>
